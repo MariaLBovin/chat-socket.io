@@ -14,13 +14,20 @@ const io = require('socket.io')(server, {
 });
 
 io.on('connection', (socket) => {
-    console.log('test');
+    let addedUser = false;
+
+    //console.log('test');
 
     socket.emit('hello world')
     
     socket.on('chat', (arg) => {
         console.log(arg);
         io.emit('chat', arg)
+    })
+
+    socket.on('login', (arg) => {
+        console.log(arg);
+        io.emit('login', arg)
     })
 })
 

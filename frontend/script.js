@@ -1,22 +1,29 @@
 
-import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+// import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
 
-const socket = io('http://localhost:3000');
+// const URL = "http://localhost:3000";
+// const socket = io(URL);
 
-const inputfield = document.querySelector('#send-message');
-const sendBtn = document.querySelector('#send-btn');
-const messageField = document.querySelector('#messages');
+// //import socket from './js/socket.js';
 
-console.log(inputfield,sendBtn,messageField);
+// const inputfield = document.querySelector('#send-message');
+// const sendBtn = document.querySelector('#send-btn');
+// const messageField = document.querySelector('#messages');
 
-socket.on('chat', (arg) => {
-    console.log('chat');
+// console.log(inputfield,sendBtn,messageField);
 
-    messageField.innerHTML += arg + '<br/>'
-})
+// socket.on('chat', (arg) => {
+//     console.log('chat', socket.id);
+
+//     messageField.innerHTML += arg + '<br/>'
+// })
 
 
-sendBtn.addEventListener('click', () => {
-    socket.emit('chat', inputfield.value );
+// sendBtn.addEventListener('click', () => {
+//     socket.emit('chat', inputfield.value );
 
-})
+// })
+
+import login from "./js/login.js";
+
+login();
