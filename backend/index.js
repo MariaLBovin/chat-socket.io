@@ -13,22 +13,24 @@ const io = require('socket.io')(server, {
     }
 });
 
+let users = [];
+
 io.on('connection', (socket) => {
-    let addedUser = false;
+    socket.on('login', (arg) => {
+        console.log(users);
+        const user = arg;
+        users.push(user);
+        io.emit('userSet', arg)
+    })
 
-    //console.log('test');
-
-    socket.emit('hello world')
+    //socket.emit('hello world')
     
     socket.on('chat', (arg) => {
         console.log(arg);
         io.emit('chat', arg)
     })
 
-    socket.on('login', (arg) => {
-        console.log(arg);
-        io.emit('login', arg)
-    })
+    
 })
 
 server.listen(3000);

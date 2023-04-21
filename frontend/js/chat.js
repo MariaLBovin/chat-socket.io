@@ -1,7 +1,6 @@
-import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+import {socket} from './socket.js';
+import { user } from './login.js';
 
-const URL = "http://localhost:3000";
-const socket = io(URL);
 
 export default function createChat () {
     const container = document.querySelector('#container-div');
@@ -23,13 +22,15 @@ export default function createChat () {
     socket.on('chat', (arg) => {
     console.log('chat',);
 
-    messageField.innerHTML += arg + '<br/>'
+    messageField.innerHTML += '<div><p>' + arg.user + '</p>' + arg.message + '</div>';
+
     
 })
 
 
 sendBtn.addEventListener('click', () => {
-    socket.emit('chat', inputField.value);
+    let msg = inputField.value
+    socket.emit('chat', {message: msg, user: user});
     
 })
 

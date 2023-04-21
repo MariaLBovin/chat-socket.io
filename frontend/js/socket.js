@@ -1,10 +1,9 @@
-// import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
 
-// const URL = "http://localhost:3000";
-// const socket = io(URL);
+const URL = "http://localhost:3000";
+export const socket = io(URL);
 
-// socket.onAny((event, ...args) => {
-//     console.log(event, args);
-//   });
+socket.onAny((event, ...args) => {
+    console.log(event, args);
+  });
 
-// export default socket;

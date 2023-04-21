@@ -1,10 +1,9 @@
 //import socket from './js/socket.js'
 
-import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+import {socket} from './socket.js';
 import createChat from './chat.js';
 
-const URL = "http://localhost:3000";
-const socket = io(URL);
+export let user; 
 
 export default function login () {
     const container = document.querySelector('#container-div');
@@ -15,10 +14,10 @@ export default function login () {
 
     container.append(inputField, sendBtn);
 
-socket.on('login', (arg) => {
-    
-    let userId = socket.id;
-    console.log('login', userId);
+    socket.on('userSet', (arg) => {
+    user = arg;
+    // let userId = socket.id;
+    // console.log('login', userId);
     
     const greetingDiv = document.createElement('h2');
     container.innerHTML = '';
